@@ -4,6 +4,7 @@ import os
 from pathlib import Path
 
 from aiogram import Bot, Dispatcher, F, Router, types
+from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
 from aiogram.filters import Command, CommandStart
 from aiogram.fsm.context import FSMContext
@@ -356,7 +357,10 @@ async def fallback(message: types.Message, state: FSMContext) -> None:
 async def main() -> None:
     await init_db()
 
-    bot = Bot(token=settings.bot_token, parse_mode=ParseMode.HTML)
+    bot = Bot(
+    token=settings.bot_token,
+    default=DefaultBotProperties(parse_mode=ParseMode.HTML)
+)
     dp = Dispatcher(storage=MemoryStorage())
     dp.include_router(router)
 
