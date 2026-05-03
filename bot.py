@@ -328,9 +328,11 @@ async def finish_positive_review(message: types.Message, state: FSMContext, revi
         "Спасибо! Ниже текст Вашего отзыва.\n\n"
         f"<blockquote>{html.escape(review_text)}</blockquote>\n\n"
         f"{copy_note}\n\n"
-        "Пожалуйста, выберите 5*, в поле текст отзыва нажмите \"вставить\". "
-        "Текст Вашего отзыва скопирован и будет вставлен. "
-        "После этого нажмите кнопку \"Опубликовать\"."
+    "Нажмите кнопку «Скопировать отзыв» ниже. После этого текст отзыва будет скопирован.\n"
+    "Пожалуйста, выберите 5 ⭐ ⭐ ⭐ ⭐ ⭐,\n"
+    "В поле «опишите минусы и плюсы» нажмите \"вставить\".\n"
+    "Текст Вашего отзыва будет вставлен.\n"
+    "Опубликуйте отзыв 😊"
     )
     await add_message_log(session_id, "bot", instruction)
     await message.answer(instruction, reply_markup=yandex_review_keyboard(review_text))
